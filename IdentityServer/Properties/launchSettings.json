@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "CompanyEmployees.OAuth": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://192.168.72.212:5001"
+    }
+  }
+}
