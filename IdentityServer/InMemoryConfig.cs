@@ -21,7 +21,12 @@ namespace IdentityServer
           };
 
         public static IEnumerable<ApiScope> GetApiScopes() =>
-          new List<ApiScope> { new ApiScope("companyApi", "CompanyEmployee API") };
+          new List<ApiScope> 
+          { 
+              new ApiScope("companyApi", "CompanyEmployee API"),
+              new ApiScope("TMS_Api", "Training Management System API"),
+              new ApiScope("LMS_Api", "Learning Management System API"),
+          };
 
         public static IEnumerable<ApiResource> GetApiResources() =>
             new List<ApiResource>
@@ -94,15 +99,6 @@ namespace IdentityServer
             {
                 new Client
                 {
-                    ClientId = "company-employee",
-                    ClientSecrets = new [] { new Secret("codemazesecret".Sha512()) },
-                    AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
-                    AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId, "companyApi" }
-                 },
-
-
-                new Client
-                {
                     ClientName = "Angular-Client",
                     ClientId = "angular-client",
                     AllowedGrantTypes = GrantTypes.Code,
@@ -113,7 +109,7 @@ namespace IdentityServer
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "companyApi"
+                        "TMS_Api"
                     },
                     AllowedCorsOrigins = { "http://localhost:4200" },
                     RequireClientSecret = false,
@@ -127,7 +123,7 @@ namespace IdentityServer
                     ClientName = "React-Client",
                     ClientId = "react-client",
                     AllowedGrantTypes = GrantTypes.Code,
-                    RedirectUris = new List<string>{ "http://localhost:3000/signin-callback", "http://localhost:3000/assets/silent-callback.html" },
+                    RedirectUris = new List<string>{ "http://localhost:3000/signin-oidc", "http://localhost:3000/assets/silent-callback.html" },
                     RequirePkce = true,
                     AllowAccessTokensViaBrowser = true,
                     AllowedScopes =
