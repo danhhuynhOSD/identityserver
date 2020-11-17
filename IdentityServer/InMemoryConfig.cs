@@ -99,6 +99,38 @@ namespace IdentityServer
             {
                 new Client
                 {
+                    ClientName = "MVC Client",
+                    ClientId = "mvc-client",
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    RedirectUris = new List<string>{ "https://localhost:5010/signin-oidc" },
+                    RequirePkce = false,
+                    AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId, IdentityServerConstants.StandardScopes.Profile },
+                    ClientSecrets = { new Secret("MVCSecret".Sha512()) }
+                },
+
+                new Client
+                {
+                    ClientName = "Angular-Client",
+                    ClientId = "angular-client-local",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RedirectUris = new List<string>{ "http://localhost:4200/signin-callback", "http://localhost:4200/assets/silent-callback.html" },
+                    RequirePkce = true,
+                    AllowAccessTokensViaBrowser = true,
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "TMS_Api"
+                    },
+                    AllowedCorsOrigins = { "http://localhost:4200" },
+                    RequireClientSecret = false,
+                    PostLogoutRedirectUris = new List<string> { "http://localhost:4200/signout-callback" },
+                    RequireConsent = false,
+                    AccessTokenLifetime = 1000
+                },
+
+                new Client
+                {
                     ClientName = "Angular-Client",
                     ClientId = "angular-client",
                     AllowedGrantTypes = GrantTypes.Code,
@@ -115,7 +147,7 @@ namespace IdentityServer
                     RequireClientSecret = false,
                     PostLogoutRedirectUris = new List<string> { "http://localhost:4200/signout-callback" },
                     RequireConsent = false,
-                    AccessTokenLifetime = 6000
+                    AccessTokenLifetime = 10
                 },
 
                 new Client

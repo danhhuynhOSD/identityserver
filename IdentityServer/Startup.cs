@@ -26,24 +26,29 @@ namespace IdentityServer
         {
             var migrationAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
-            services.AddIdentityServer()
-                .AddInMemoryApiScopes(InMemoryConfig.GetApiScopes())
-                .AddInMemoryApiResources(InMemoryConfig.GetApiResources())
-                .AddInMemoryIdentityResources(InMemoryConfig.GetIdentityResources())
+            const string sqlString = @"server=127.0.0.1; port=65350 database =IdentityServer4Config; Integrated Security=true;";
+
+            services.AddIdentityServer(opt =>
+            {
+                opt.Authentication.CookieLifetime = TimeSpan.FromMinutes(1);
+            })
+                //.AddInMemoryApiScopes(InMemoryConfig.GetApiScopes())
+                //.AddInMemoryApiResources(InMemoryConfig.GetApiResources())
+                //.AddInMemoryIdentityResources(InMemoryConfig.GetIdentityResources())
+                //.AddInMemoryClients(InMemoryConfig.GetClients())
+                //.AddProfileService<CustomProfileService>()
                 .AddTestUsers(InMemoryConfig.GetUsers())
-                .AddInMemoryClients(InMemoryConfig.GetClients())
                 .AddDeveloperSigningCredential()
-                .AddProfileService<CustomProfileService>();
-                //.AddConfigurationStore(opt =>
-                //{
-                //    opt.ConfigureDbContext = c => c.UseNpgsql(Configuration.GetConnectionString("Defaultstring"),
-                //        sql => sql.MigrationsAssembly(migrationAssembly));
-                //})
-                //.AddOperationalStore(opt =>
-                //{
-                //    opt.ConfigureDbContext = o => o.UseNpgsql(Configuration.GetConnectionString("Defaultstring"),
-                //        sql => sql.MigrationsAssembly(migrationAssembly));
-                //});
+                .AddConfigurationStore(opt =>
+                {
+                    opt.ConfigureDbContext = c => c.UseNpgsql(sqlString,
+                        sql => sql.MigrationsAssembly(migrationAssembly));
+                })
+                .AddOperationalStore(opt =>
+                {
+                    opt.ConfigureDbContext = o => o.UseNpgsql(sqlString,
+                        sql => sql.MigrationsAssembly(migrationAssembly));
+                });
 
             services.AddControllersWithViews();
         }

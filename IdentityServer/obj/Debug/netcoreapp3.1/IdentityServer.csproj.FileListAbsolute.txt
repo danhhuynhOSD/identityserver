@@ -1,7 +1,6 @@
 C:\Users\danh.huynh\source\CodeMaze\IdentityServer\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\danh.huynh\source\CodeMaze\IdentityServer\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\danh.huynh\source\CodeMaze\IdentityServer\bin\Debug\netcoreapp3.1\IdentityServer.exe
-C:\Users\danh.huynh\source\CodeMaze\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.csprojAssemblyReference.cache
 C:\Users\danh.huynh\source\CodeMaze\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.AssemblyInfoInputs.cache
 C:\Users\danh.huynh\source\CodeMaze\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.AssemblyInfo.cs
 C:\Users\danh.huynh\source\CodeMaze\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.RazorTargetAssemblyInfo.cache
@@ -98,3 +97,4 @@ C:\Users\danh.huynh\source\CodeMaze\IdentityServer\bin\Debug\netcoreapp3.1\runti
 C:\Users\danh.huynh\source\CodeMaze\IdentityServer\obj\Debug\netcoreapp3.1\scopedcss\bundle\IdentityServer.styles.css
 C:\Users\danh.huynh\source\CodeMaze\IdentityServer\bin\Debug\netcoreapp3.1\Npgsql.dll
 C:\Users\danh.huynh\source\CodeMaze\IdentityServer\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\danh.huynh\source\CodeMaze\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.csprojAssemblyReference.cache
